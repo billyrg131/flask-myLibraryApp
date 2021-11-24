@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Payments</title>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Sans">
+    <style>
+        .dash-hd{
+            font-size: 27px;
+            font-family: Josefin Sans, sans-serif;
+            border-top-right-radius: 50px;
+            border-bottom-right-radius: 50px;
+            border: 1px solid black;
+            width: 78vw;
+            padding: 19px;
+            background: lightseagreen;
+        }
+        .green-txt{
+            font-family: Ubuntu,sans-serif;
+            font-size: 23px;
+        }
+        .logo-hd{
+            color: #0dcaf0;
+            font-size: 27px;
+            font-family: Sofia, sans-serif;
+            border-top-left-radius: 50px;
+            border-bottom-left-radius: 50px;
+            border: 1px solid greenyellow;
+            width: 40vw;
+            padding: 19px;
+            background: purple;
+        }
+        body{
+            background-image: url("../static/images/zigzag1.jpeg");
+            background-size: cover;
+        }
+        footer{
+            font-size: 19px;
+            background: greenyellow;
+            border: 1px solid purple;
+            font-weight: bolder;
+            position: absolute;
+            width: 100%;
+            padding: 14px;
+            font-family: Audiowide, sans-serif;
+        }
+    </style>
+</head>
+<body>
+<div class="row">
+    <div class="col-9">
+        <h1 class="dash-hd">Welcome <a class="green-txt">{{ session["name"] }}</a></h1>
+    </div>
+    <div class="col-3">
+        <h1 class="logo-hd"><img src="../static/images/book2.png" alt="#" width="50" height="53"> Book Payments</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <a href="/" class="btn btn-secondary" style="float: left;">Add Users</a>
+    </div>
+    <div class="col-6">
+        <a href="#" class="btn btn-warning" style="float: right;">Logout</a>
+    </div>
+</div>
+<br>
+<table class="table table-hover table-dark">
+    <tr>
+        <td>Name</td>
+        <td>File</td>
+        <td>Amount</td>
+    </tr>
+    {% for user in users %}
+    <tr>
+        <td>{{ user.name }}</td>
+        <td>{{ user.file }}</td>
+        <td>{{ user.amount }}</td>
+    </tr>
+    {% endfor %}
+</body>
+</html>

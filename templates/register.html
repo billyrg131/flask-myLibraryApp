@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather">
+    <style>
+        body{
+            background: yellow;
+        }
+        nav{
+            font-family: Times New Roman, sans-serif;
+	    }
+        .reg-hd{
+			font-size: 24px;
+			text-align: center;
+			background: purple;
+			color: greenyellow;
+			padding: 10px;
+		}
+		.reg-hd2{
+			font-size: 20px;
+			color: red;
+            text-align: center;
+		}
+        ::placeholder{
+			font-family: Josefin Sans, sans-serif;
+			font-size: 19px;
+		}
+        form{
+			height: 66vh;
+		}
+    </style>
+</head>
+<body>
+<div class="container">
+        <h1 class="reg-hd"><a href="/" class="btn btn-info" style="float: left">Home</a><img src="../static/images/book.png" width="50" height="53" alt="#">myLibrary<a href="/login" class="btn btn-success" style="float: right">Login</a></h1><br>
+        <h3 class="reg-hd2">Register here!</h3><br>
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6" style="border: 1px solid black; background-image: url('../static/images/stripe1.jpeg'); background-size: cover;">
+                {% with messages = get_flashed_messages() %}
+			        {% for x in messages %}
+				        <p style="color: black; font-family: Merriweather, sans-serif; font-size: 19px;">{{ x }}</p>
+			        {% endfor %}
+		        {% endwith %}
+				<form action="" method="post">
+					<input type="text" class="form-control" name="name" placeholder="Enter username"><br>
+					<input type="email" class="form-control" name="email" placeholder="Enter email"><br>
+					<input type="password" class="form-control" name="password" placeholder="Enter password"><br><br>
+					<input type="submit" class="btn btn-outline-info" value="Register">
+					<input type="reset" class="btn btn-outline-danger" value="Reset">
+				</form>
+		</div>
+        <div class="col-3"></div>
+    </div>
+</div>
+</body>
+</html>

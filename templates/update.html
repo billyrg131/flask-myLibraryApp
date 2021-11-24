@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:ital@1&display=swap">
+    <style>
+        ::placeholder{
+            font-family: Josefin Sans, sans-serif;
+            font-size: 20px;
+        }
+        body{
+            background-image: url("../static/images/tent1 copy.png");
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+<h1 class="text-info text-center" style="font-family: Sofia,sans-serif;">myLibrary</h1>
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <h3 class="text-info text-center">Updating Users</h3>
+
+            {% with messages = get_flashed_messages() %}
+                {% for message in messages %}
+                    <p style="font-family: Ubuntu,sans-serif; color: lawngreen">{{ message }}</p>
+                {% endfor %}
+            {% endwith %}
+
+            <form action="" method="post">
+                <input type="text" placeholder="Enter name" class="form-control" name="name" value="{{ user.name }}"><br>
+                <input type="email" placeholder="Enter email" class="form-control" name="email" value="{{ user.email }}"><br>
+                <input type="password" placeholder="Enter password" class="form-control" name="password" value="{{ user.password }}"><br>
+                <input type="submit" class="btn btn-outline-danger btn-block" value="Update" href="/update/{{ user.id }}">
+                <input type="reset" class="btn btn-outline-info btn-block" value="Reset">
+                <br>
+                <br>
+                <a href="/dashboard" class="btn btn-outline-success">Back</a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

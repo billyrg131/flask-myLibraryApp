@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Sans">
+    <style>
+        body{
+            background: yellow;
+        }
+        nav{
+            font-family: Times New Roman, sans-serif;
+	    }
+        .login-hd{
+			font-size: 24px;
+			text-align: center;
+			background: purple;
+			color: greenyellow;
+			padding: 10px;
+		}
+		.login-hd2{
+			font-size: 20px;
+			color: red;
+            text-align: center;
+		}
+        ::placeholder{
+			font-family: Josefin Sans, sans-serif;
+			font-size: 19px;
+		}
+        form{
+			height: 66vh;
+		}
+    </style>
+</head>
+<body>
+<div class="container">
+<h1 class="login-hd"><a href="/" class="btn btn-info" style="float: left">Home</a><img src="../static/images/book.png" width="50" height="53">myLibrary<a href="/" class="btn btn-success" style="float: right">Register</a>
+			<a href="/logout" class="btn btn-danger" style="float: right">Logout</a></h1><br>
+        <h3 class="login-hd2">Login Here!</h3><br>
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6" style="border: 1px solid black; background-image: url('../static/images/stripe2.jpeg'); background-size: cover;">
+                {% with messages = get_flashed_messages() %}
+			        {% for x in messages %}
+				        <p style="color: black; font-family: Merriweather, sans-serif; font-size: 19px;">{{ x }}</p>
+			        {% endfor %}
+		        {% endwith %}
+				<form action="" method="post">
+					<input type="email" class="form-control" name="email" placeholder="Enter email"><br>
+					<input type="password" class="form-control" name="password" placeholder="Enter password"><br><br>
+					<input type="submit" class="btn btn-outline-info" value="Login">
+					<input type="reset" class="btn btn-outline-danger" value="Reset">
+				</form>
+		</div>
+        <div class="col-3"></div>
+    </div>
+</div>
+</body>
+</html>

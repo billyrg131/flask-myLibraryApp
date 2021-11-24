@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Books</title>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.css">
+</head>
+<style>
+    body{
+        background-image: url("../static/images/lib1.jpeg");
+    }
+    .books-hd{
+        font-size: 25px;
+        text-align: center;
+    }
+    nav{
+            font-family: Times New Roman, sans-serif;
+	    }
+</style>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	  <div class="container-fluid">
+	    <a class="navbar-brand" href="#" style="font-size: 22px;">myLibrary</a>
+	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	      <span class="navbar-toggler-icon"></span>
+	    </button>
+	    <div class="collapse navbar-collapse" id="navbarNav">
+	      <ul class="navbar-nav">
+	        <li class="nav-item">
+	          <a class="nav-link active" aria-current="page" href="/">Register</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" href="/login">Login</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" href="/dashboard">Dashboard</a>
+	        </li>
+              <li class="nav-item">
+	          <a class="nav-link" href="/dashboard_two">Dashboard 2</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" href="/books">Books</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" href="#">Contacts</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" href="/logout" tabindex="-1" aria-disabled="true">Logout</a>
+	        </li>
+	      </ul>
+	    </div>
+	  </div>
+	</nav>
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col-6" style="background: yellow;">
+    <h2 class="books-hd">Select file to upload</h2>
+                <p>
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <ul>
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                    {% endwith %}
+                </p>
+            {% if filename %}
+            <div>
+                <p><embed src="{{ url_for('display_image', filename=filename) }}" alt="" width="120" height="120">{{ filename }}</p>
+                <a href="{{ url_for('display_image', filename=filename) }}" class="btn btn-secondary">Preview</a>
+                <a href="/pay" class="btn btn-danger">Buy</a>
+            </div>
+            {% endif %}
+        <form action="/books" method="post" enctype="multipart/form-data">
+            <dl>
+                <p>
+                    <input type="file" name="file" class="form-control" autocomplete="off" required>
+                </p>
+            </dl>
+            <p>
+                <input type="submit" value="Submit" class="btn btn-outline-success">
+            </p>
+        </form>
+    </div>
+    <div class="col-3"></div>
+</div>
+</body>
+</html>

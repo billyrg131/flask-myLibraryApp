@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payments</title>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Sans">
+    <style>
+        ::placeholder{
+            font-size: 19px;
+            font-family: Josefin Sans, sans-serif;
+        }
+        nav{
+            font-family: Times New Roman, sans-serif;
+	    }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	  <div class="container-fluid">
+	    <a class="navbar-brand" href="#" style="font-size: 22px;">myLibrary</a>
+	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	      <span class="navbar-toggler-icon"></span>
+	    </button>
+	    <div class="collapse navbar-collapse" id="navbarNav">
+	      <ul class="navbar-nav">
+	        <li class="nav-item">
+	          <a class="nav-link active" aria-current="page" href="/">Register</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" href="/login">Login</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" href="/dashboard">Dashboard</a>
+	        </li>
+              <li class="nav-item">
+	          <a class="nav-link" href="/dashboard_two">Dashboard 2</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" href="/books">Books</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" href="#">Contacts</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" href="/logout" tabindex="-1" aria-disabled="true">Logout</a>
+	        </li>
+	      </ul>
+	    </div>
+	  </div>
+	</nav>
+<div class="container">
+    {% with messages = get_flashed_messages() %}
+        {% for msg in messages %}
+            <p style="color: red; text-align: center;">{{ msg }}</p>
+        {% endfor %}
+    {% endwith %}
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <h3 style="font-size: 23px; text-align: center;">Book Payments</h3>
+            <h2 style="font-size: 23px;">{{ filename }}</h2>
+            <form action="" method="post">
+                <input type="text" name="name" placeholder="Enter Username" class="form-control"><br>
+                <input type="text" name="file" class="form-control" placeholder="Type Book Name"><br>
+                <input type="text" name="amount" class="form-control" placeholder="Enter Amount"><br>
+                <input type="submit" value="Pay" class="btn btn-warning">
+                <input type="reset" value="Reset" class="btn btn-danger">
+            </form>
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>
+</body>
+</html>
