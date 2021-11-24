@@ -70,16 +70,16 @@
 <table class="table table-hover table-dark">
     <tr>
         <td>Name</td>
-        <td>Email</td>
-        <td>Delete</td>
-        <td>Update</td>
+        <td>File</td>
+        <td>Date</td>
+        <td>Status</td>
     </tr>
     {% for user in users %}
     <tr>
         <td>{{ user.name }}</td>
-        <td>{{ user.email }}</td>
-        <td><a href="/delete/{{ user.id }}" class="btn btn-danger">Delete</a></td>
-        <td><a href="/update/{{ user.id }}" class="btn btn-info">Update</a></td>
+        <td>{{ user.book }}</td>
+        <td>{{ user.date }}</td>
+        <td>{{ user.status }}</td>
     </tr>
     {% endfor %}
 </table>
