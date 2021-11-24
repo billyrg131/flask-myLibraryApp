@@ -70,7 +70,10 @@ def dashsec_one():
 
 @app.route('/dashsec2')
 def dashsec_two():
-    return render_template("dashsec2.html")
+    if not session.get("logged_in"):
+        return redirect(url_for("login"))
+    users = Borrow.select()
+    return render_template("dashsec2.html", users=users)
 
 
 @app.route('/dashsec3')
@@ -83,6 +86,8 @@ def dashsec_three():
 
 @app.route('/dashsec4')
 def dashsec_four():
+    if not session.get("logged_in"):
+        return redirect(url_for("login"))
     users = Payments.select()
     return render_template("dashsec4.html", users=users)
 
@@ -131,9 +136,17 @@ def pay():
     return render_template("pay.html")
 
 
-@app.route('/borrow_log')
+@app.route('/borrow_log', methods=['POST', 'GET'])
 def borrow():
+    if request.method == "POST":
+        name = request.form['username']
+        book = request.form['file']
+        date = request.form['date']
+        status = request.form['status']
+        Borrow.create(name=name, book=book, date=date, status=status)
+        flash("Borrowed book!")
     return render_template("borrowlog.html")
+
 
 
 @app.route('/receipt/<int:id>')
