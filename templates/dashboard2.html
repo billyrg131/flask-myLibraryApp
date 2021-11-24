@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Sans">
     <style>
         nav{
             font-family: Times New Roman, sans-serif;
@@ -35,6 +36,20 @@
             padding: 14px;
             font-family: Audiowide, sans-serif;
         }
+        .dash-hd{
+            font-size: 27px;
+            font-family: Josefin Sans, sans-serif;
+            border-top-right-radius: 50px;
+            border-bottom-right-radius: 50px;
+            border: 1px solid black;
+            width: 78vw;
+            padding: 19px;
+            background: lightseagreen;
+        }
+        .green-txt{
+            font-family: Ubuntu,sans-serif;
+            font-size: 23px;
+        }
     </style>
 </head>
 <body>
@@ -52,11 +67,8 @@
 	        <li class="nav-item">
 	          <a class="nav-link" href="/login">Login</a>
 	        </li>
-	        <li class="nav-item">
-	          <a class="nav-link" href="/dashboard">Dashboard</a>
-	        </li>
-              <li class="nav-item">
-	          <a class="nav-link" href="/dashboard_two">Dashboard 2</a>
+            <li class="nav-item">
+	          <a class="nav-link" href="/dashboard_two">Dashboard</a>
 	        </li>
 	        <li class="nav-item">
 	          <a class="nav-link" href="/books">Books</a>
@@ -70,7 +82,28 @@
 	      </ul>
 	    </div>
 	  </div>
-	</nav>    <div class="nav-group">
+	</nav>
+<div class="row">
+    <div class="col-6">
+        <h1 class="dash-hd">Welcome <a class="green-txt">{{ session["name"] }}</a></h1>
+    </div>
+    <div class="col-6"></div>
+</div>
+<div class="row">
+    <div class="col-4">
+        <a href="/" class="btn btn-secondary" style="float: left;">Add Users</a>
+    </div>
+    <div class="col-4"></div>
+    <div class="col-4">
+        <a href="/logout" class="btn btn-warning" style="float: right;">Logout</a>
+    </div>
+</div>
+{% with messages = get_flashed_messages() %}
+    {% for msg in messages %}
+        <p style="font-size: 20px;">{{ msg }}</p>
+    {% endfor %}
+{% endwith %}
+<div class="nav-group">
         <nav class="nav">
             <ul>
                 <li><a href="/books">Home Page</a></li><br>
